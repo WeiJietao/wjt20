@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta content="email=no" name="format-detection"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
+    <meta name="full-screen" content="yes"/>
+    <title>WJT20's blog</title>
+
+    <script>
+    var Waydua = {
+        browser: {
+            bISPC: !/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent),
+            bIsIOS: !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+            bIsUc: navigator.userAgent.toLowerCase().match(/ucweb/i) == "ucweb",
+            bIsAndroid: navigator.userAgent.toLowerCase().match(/android/i) == "android",
+            bIsAndroidVersion: Number(navigator.userAgent.toLowerCase().substr(navigator.userAgent.toLowerCase().indexOf('android') + 8, 3)),
+            bIsQQ: navigator.userAgent.toLowerCase().match(/qq/i) == "qq",
+            bIsWechat: navigator.userAgent.toLowerCase().match(/micromessenger/i) == "micromessenger",
+            bIsWeibo: navigator.userAgent.toLowerCase().match(/weibo/i) == "weibo",
+            bIsHuawei: navigator.userAgent.toLowerCase().match(/huawei/i) == "huawei"
+        }
+    };
+    </script>
+</head>
+<body>
+    <main id="app">WJT20</main>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</html>
