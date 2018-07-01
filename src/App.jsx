@@ -11,10 +11,15 @@ import ArticleList from './components/ArticleList.jsx';
 class App extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            mode: null
+        };
     }
 
     componentWillMount() {
-        console.log(this.props);
+        this.setState({
+            mode: window.location.hostname === 'weijietao.github.io' ? 'PROD' : 'DEV'
+        });
     }
 
     render() {
@@ -22,8 +27,8 @@ class App extends React.Component {
 
         return (
             <div class="main-container">
-                <Nav />
-                <ArticleList />
+                <Nav mode={ this.state.mode } />
+                <ArticleList mode={ this.state.mode } />
             </div>
         )
     }
