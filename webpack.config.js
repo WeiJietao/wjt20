@@ -33,6 +33,7 @@ module.exports = {
                 test: /\.(css|scss)$/,
                 loaders: ExtractTextWebpackPlugin.extract({
                     use: [
+                        "css-loader",
                         "postcss-loader",
                         "sass-loader"
                     ],
