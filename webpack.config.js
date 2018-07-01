@@ -87,3 +87,7 @@ module.exports = {
         compress: true, // 开发服务器是否启动gzip等压缩
     },
 }
+
+console.log(process.env.MODE);
+
+// https://weijietao.github.io/wjt20/
