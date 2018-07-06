@@ -6,7 +6,7 @@
   "scripts": {
     "build-dev": "set MODE=DEVELOPMENT&&webpack --colors&&node ./bin/clear.js",
     "build-prod": "set MODE=PRODUCTION&&webpack --colors&&node ./bin/clear.js",
-    "dev": "webpack-dev-server --mode development"
+    "dev": "set MODE=DEVELOPMENT&&webpack-dev-server --mode development"
   },
   "repository": {
     "type": "git",

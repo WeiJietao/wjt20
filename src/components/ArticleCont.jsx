@@ -14,7 +14,7 @@ export default class ArticleCont extends React.Component {
 
     render() {
         const { mode, data, articleIndex, ifShowCont } = this.props;
-        const contData = data[articleIndex];
+        const contData = data[articleIndex] || { name: '', cont: '' };
         const originalPath = 'https://github.com/WebUnion-core/doc-repositort/blob/master/WJT20/' + encodeURI(contData.name);
 
         return (

@@ -43,6 +43,19 @@ class App extends React.Component {
         });
     }
 
+    requestAllData(ary, endCallback, data = []) {
+        if (ary.length > 0) {
+            const port = ary.shift();
+            request
+                .get(port)
+                .end((err, res) => {
+                    this.requestAllData(ary, endCallback, [...data, ...JSON.parse(res.text)]);
+                });
+        } else {
+            endCallback(data);
+        }
+    }
+
     componentWillMount() {
         const mode = window.location.hostname === 'weijietao.github.io' ? 'PROD' : 'DEV';
 
@@ -54,15 +67,16 @@ class App extends React.Component {
             })
         } else {
             // 请求接口拿数据
-            request
-                .get('/database/markdown-data.json')
-                .end((err, res) => {
-                    window.localStorage._ARTICLE_ = res.text;
-                    this.setState({
-                        data: JSON.parse(res.text),
-                        mode
-                    });
+            this.requestAllData([
+                '/database/md-data1.json',
+                '/database/md-data2.json'
+            ], (data) => {
+                window.localStorage._ARTICLE_ = JSON.stringify(data);
+                this.setState({
+                    data,
+                    mode
                 });
+            });
         }
     }
 
