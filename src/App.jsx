@@ -10,6 +10,11 @@ import Nav from './components/Nav.jsx';
 import ArticleList from './components/ArticleList.jsx';
 import ArticleCont from './components/ArticleCont.jsx';
 
+const resData = [
+    ...require('./../_db/md-data1.json'),
+    ...require('./../_db/md-data2.json'),
+];
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -43,13 +48,17 @@ class App extends React.Component {
         });
     }
 
-    requestAllData(ary, endCallback, data = []) {
+    requestAllData(ary, endCallback, errorCallback, data = []) {
         if (ary.length > 0) {
             const port = ary.shift();
             request
                 .get(port)
                 .end((err, res) => {
-                    this.requestAllData(ary, endCallback, [...data, ...JSON.parse(res.text)]);
+                    if (err) {
+                        errorCallback();
+                    } else {
+                        this.requestAllData(ary, endCallback, errorCallback, [...data, ...JSON.parse(res.text)]);
+                    }
                 });
         } else {
             endCallback(data);
@@ -67,16 +76,26 @@ class App extends React.Component {
             })
         } else {
             // 请求接口拿数据
-            this.requestAllData([
-                '/_db/md-data1.json',
-                '/_db/md-data2.json'
-            ], (data) => {
-                window.localStorage._ARTICLE_ = JSON.stringify(data);
-                this.setState({
-                    data,
-                    mode
-                });
-            });
+            this.requestAllData(
+                [
+                    '/_db/md-data1.json',
+                    '/_db/md-data2.json'
+                ],
+                (data) => {
+                    window.localStorage._ARTICLE_ = JSON.stringify(data);
+                    this.setState({
+                        data,
+                        mode
+                    });
+                },
+                () => {
+                    window.localStorage._ARTICLE_ = JSON.stringify(resData);
+                    this.setState({
+                        data: resData,
+                        mode
+                    });
+                }
+            );
         }
     }
 
