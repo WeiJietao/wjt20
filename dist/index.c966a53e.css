@@ -520,6 +520,60 @@ a {
   a:hover {
     color: inherit; }
 
+/* 文章内容样式 */
+.article-content {
+  font-size: 0.95rem;
+  padding: 0 0.65rem 1rem; }
+  .article-content h1 {
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin: 1.75rem 0;
+    color: #43a598; }
+  .article-content h2 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0.85rem 0;
+    color: #8096b9; }
+  .article-content h3 {
+    font-size: 1.05rem;
+    font-weight: bold;
+    margin: 0.85rem 0;
+    color: #a980b9; }
+  .article-content ol, .article-content ul {
+    margin-left: 1rem; }
+  .article-content ol {
+    list-style: decimal; }
+  .article-content ul {
+    list-style: square; }
+  .article-content li {
+    margin-bottom: 0.35rem; }
+  .article-content hr {
+    margin: 1.5rem 0;
+    border-color: #dcdcdc; }
+  .article-content p {
+    font-size: 0.9rem;
+    margin: 0.5rem 0; }
+  .article-content pre {
+    background-color: #000;
+    color: #47ca8f;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600; }
+    .article-content pre code {
+      background-color: inherit;
+      padding: 0;
+      border-radius: 0;
+      margin: 0;
+      line-height: 1.4rem; }
+  .article-content code {
+    font-family: inherit;
+    background-color: #ececec;
+    padding: 0 0.2rem;
+    border-radius: 0.1rem 0.1rem; }
+
 /* 导航 */
 .nav-container {
   position: relative; }
@@ -558,3 +612,19 @@ a {
     margin-bottom: 0.5rem;
     border: 1px solid #dcdcdc;
     box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem #ececec; }
+
+/* 内容 */
+.article-content-container .head-bar {
+  font-size: 1rem;
+  padding: 0.75rem 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #ffffff; }
+  .article-content-container .head-bar .back-icon {
+    margin: 0 0.7rem; }
+
+.article-content-container .original-link {
+  display: block;
+  margin: 1rem 0.5rem;
+  color: rgba(0, 0, 0, 0.75); }
+  .article-content-container .original-link:hover, .article-content-container .original-link:active, .article-content-container .original-link:focus, .article-content-container .original-link:visited {
+    color: #47ca8f; }
