@@ -6,8 +6,10 @@ export default class Nav extends React.Component {
     }
 
     render() {
+        const { ifShowNav } = this.props;
+
         return (
-            <nav className="nav-container">
+            <nav className="nav-container" style={{ display: ifShowNav ? 'block' : 'none' }} >
                 <figure className="bg-container">
                     <img className="bg-img" src={ this.props.mode === 'DEV' ? require('./../images/w1.jpg') : 'https://raw.githubusercontent.com/WeiJietao/wjt20/master/dist/d5f699d55c08627b76d32f97027eff19.jpg' } />
                 </figure>
