@@ -68,8 +68,8 @@ class App extends React.Component {
         } else {
             // 请求接口拿数据
             this.requestAllData([
-                '/database/md-data1.json',
-                '/database/md-data2.json'
+                '/_db/md-data1.json',
+                '/_db/md-data2.json'
             ], (data) => {
                 window.localStorage._ARTICLE_ = JSON.stringify(data);
                 this.setState({
