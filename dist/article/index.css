@@ -516,45 +516,6 @@ main {
     }
 }
 @charset "UTF-8";
-/* 导航 */
-.nav-container {
-  position: relative; }
-  .nav-container .bg-container {
-    overflow: hidden;
-    width: 100%;
-    height: 14.5rem;
-    border-bottom: 2.5rem solid rgba(0, 0, 0, 0.75); }
-    .nav-container .bg-container .bg-img {
-      width: 150%;
-      -webkit-animation: slide 20s linear 1s infinite alternate;
-              animation: slide 20s linear 1s infinite alternate; }
-  .nav-container .avator-container {
-    position: absolute;
-    bottom: 0.625rem;
-    width: 98%; }
-    .nav-container .avator-container .avator {
-      display: block;
-      float: right;
-      width: 3.75rem;
-      height: 3.75rem;
-      border-radius: 3.75rem 3.75rem;
-      background-color: #ffffff;
-      border: 0.2rem solid #0f85f2; }
-    .nav-container .avator-container .user-name {
-      position: absolute;
-      bottom: 0;
-      right: 4.5rem;
-      color: #ffffff; }
-
-/* 列表 */
-.article-list-container {
-  padding: 0.5rem; }
-  .article-list-container .article-list-item {
-    padding: 0.75rem;
-    margin-bottom: 0.5rem;
-    border: 1px solid #dcdcdc;
-    box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem #ececec; }
-@charset "UTF-8";
 /* 文章内容样式 */
 .article-content {
   font-size: 0.95rem;

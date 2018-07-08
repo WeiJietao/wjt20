@@ -10,9 +10,6 @@ const PORT = 2015;
 const webpackConfig = {
     mode: MODE.toLowerCase(),
     entry: {
-        'index': [
-            path.resolve(__dirname, './src/entry.js')
-        ],
         'vendor': [
             'react',
             'react-dom',
@@ -71,7 +68,7 @@ const webpackConfig = {
     plugins: [
         // 注入常量
         new webpack.DefinePlugin({
-            __DEV__: String(true)
+            __DEV__: String(MODE === 'DEVELOPMENT')
         })
     ]
 }
@@ -99,14 +96,6 @@ function setDevMode() {
     // dev工具
     webpackConfig.devtool = 'cheap-module-eval-source-map';
 
-    // 热更新配置
-    webpackConfig.entry.index.push(
-        'react-hot-loader/patch',
-        'babel-polyfill',
-        'webpack-dev-server/client',
-        'webpack/hot/only-dev-server'
-    );
-
     // 开发模式server
     webpackConfig.devServer = {
         contentBase: path.resolve(__dirname, './dist'),
@@ -116,7 +105,16 @@ function setDevMode() {
         hot: true
     };
 
-    // 设置打包输出
+    // 设置打包入口
+    webpackConfig.entry.index = [
+        path.resolve(__dirname, './src/entry.js'),
+        'react-hot-loader/patch',
+        'babel-polyfill',
+        'webpack-dev-server/client',
+        'webpack/hot/only-dev-server'
+    ];
+
+    // 设置打包出口
     webpackConfig.output = {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/',
@@ -135,24 +133,39 @@ function setProdMode() {
         ]),
 
         // 分离的css文件加hash
-        new ExtractTextWebpackPlugin('[name].[hash:8].css'),
+        new ExtractTextWebpackPlugin('[name].css'),
 
-        // 配置页面模板
-        new HtmlWebpackPlugin({
-            title: '欢迎访问WJT20的博客',
-            filename: path.resolve(__dirname, './index.html'),
-            template: path.resolve(__dirname, './src/template.ejs'),
-            hash: false,
-            minify: false
-        })
+        // // 配置页面模板
+        // new HtmlWebpackPlugin({
+        //     title: '欢迎访问WJT20的博客',
+        //     filename: path.resolve(__dirname, './home.html'),
+        //     template: path.resolve(__dirname, './src/template.ejs'),
+        //     hash: false,
+        //     minify: false
+        // }),
+        // new HtmlWebpackPlugin({
+        //     title: '欢迎访问WJT20的博客',
+        //     filename: path.resolve(__dirname, './article.html'),
+        //     template: path.resolve(__dirname, './src/template.ejs'),
+        //     hash: false,
+        //     minify: false
+        // })
     );
 
-    // 设置打包输出
+    // TODO 设置打包入口，需优化
+    webpackConfig.entry['home/index'] = [
+        path.resolve(__dirname, './src/router/Home/entry.js')
+    ];
+    webpackConfig.entry['article/index'] = [
+        path.resolve(__dirname, './src/router/ArticleCont/entry.js')
+    ];
+
+    // 设置打包出口
     webpackConfig.output = {
         path: path.resolve(__dirname, './dist'),
         publicPath: 'https://weijietao.github.io/wjt20/dist/',
-        filename: '[name].[hash:8].js',
-        chunkFilename: '[name].[hash:8].js'
+        filename: '[name].js',
+        chunkFilename: '[name].js'
     };
 }
 

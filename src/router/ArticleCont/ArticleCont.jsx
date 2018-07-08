@@ -80,6 +80,14 @@ export default class ArticleCont extends React.Component {
         });
     }
 
+    getLink() {
+        if (__DEV__) {
+            return <Link to="/home"><i className="icon-arrow-left back-icon"></i></Link>;
+        } else {
+            return <a href="https://weijietao.github.io/wjt20/home.html"><i className="icon-arrow-left back-icon"></i></a>;
+        }
+    }
+
     render() {
         const { data, aid } = this.state;
         const contData = data[aid] || { name: '', cont: '' };
@@ -88,7 +96,7 @@ export default class ArticleCont extends React.Component {
         return (
             <section className="article-content-container" >
                 <h1 className="head-bar">
-                    <Link to="/home"><i className="icon-arrow-left back-icon"></i></Link>
+                    { this.getLink() }
                     <span>{ contData.name.replace('.md', '') }</span>
                 </h1>
                 <article className="article-content" dangerouslySetInnerHTML={{ __html: decodeURI(contData.cont) }} ></article>
