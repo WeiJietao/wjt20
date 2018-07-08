@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import ArticleCont from './ArticleCont';
+import ArticleCont from './ArticleCont.jsx';
 
 render(
     <ArticleCont />,

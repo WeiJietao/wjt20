@@ -12,7 +12,8 @@ const webpackConfig = {
     entry: {
         'vendor': [
             'react',
-            'react-dom'
+            'react-dom',
+            'react-router'
         ]
     },
     module: {

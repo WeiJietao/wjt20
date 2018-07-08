@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import Home from './Home';
+import Home from './Home.jsx';
 
 render(
     <Home />,
