@@ -5,7 +5,7 @@
         "stage-2"
     ],
     "plugins": [
-        "transform-react-jsx"
-    ],
-    "compact": false
+        "transform-react-jsx",
+        "react-hot-loader/babel"
+    ]
 }

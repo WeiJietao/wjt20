@@ -19,7 +19,7 @@ export default class ArticleList extends React.Component {
             <ul className="article-list-container" style={{ display: ifShowList ? 'block' : 'none' }} >
             {
                 this.props.data.map((item, index) => {
-                    return <li className="article-list-item" onClick={ () => this.clickVisitArticleCont(index) } >{ item.name.replace('.md', '') }</li>
+                    return <li key={ index } className="article-list-item" onClick={ () => this.clickVisitArticleCont(index) } >{ item.name.replace('.md', '') }</li>
                 })
             }
             </ul>

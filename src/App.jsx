@@ -10,9 +10,10 @@ import Nav from './components/Nav.jsx';
 import ArticleList from './components/ArticleList.jsx';
 import ArticleCont from './components/ArticleCont.jsx';
 
+// 备用数据，如果请求接口出错，改用备用数据
 const resData = [
     ...require('./../_db/md-data1.json'),
-    ...require('./../_db/md-data2.json'),
+    ...require('./../_db/md-data2.json')
 ];
 
 class App extends React.Component {
@@ -29,25 +30,32 @@ class App extends React.Component {
         };
     }
 
+    // 切换导航
     setShowNav = (ifShowNav = !this.state.ifShowNav) => {
         this.setState({
             ifShowNav
         });
     }
 
+    // 切换文章列表
     setShowList = (ifShowList = !this.state.ifShowList) => {
         this.setState({
             ifShowList
         });
     }
 
-    setShowCont = (ifShowCont = !this.state.ifShowCont, articleIndex = this.state.articleIndex) => {
+    // 切换文章内容
+    setShowCont = (
+        ifShowCont = !this.state.ifShowCont,
+        articleIndex = this.state.articleIndex
+    ) => {
         this.setState({
             ifShowCont,
             articleIndex
         });
     }
 
+    // TODO 递归请求多个接口数据，使用Promise更佳
     requestAllData(ary, endCallback, errorCallback, data = []) {
         if (ary.length > 0) {
             const port = ary.shift();
@@ -57,7 +65,12 @@ class App extends React.Component {
                     if (err) {
                         errorCallback();
                     } else {
-                        this.requestAllData(ary, endCallback, errorCallback, [...data, ...JSON.parse(res.text)]);
+                        this.requestAllData(
+                            ary,
+                            endCallback,
+                            errorCallback,
+                            [...data, ...JSON.parse(res.text)]
+                        );
                     }
                 });
         } else {
@@ -67,6 +80,8 @@ class App extends React.Component {
 
     componentWillMount() {
         const mode = window.location.hostname === 'weijietao.github.io' ? 'PROD' : 'DEV';
+
+        console.log(3);
 
         if (window.localStorage._ARTICLE_) {
             // 直接从缓存中拿数据
@@ -101,11 +116,16 @@ class App extends React.Component {
 
     render() {
         const { contentStore, setContentType } = this.props;
-        const { mode, data, ifShowNav, ifShowList, ifShowCont, articleIndex } = this.state;
         const { setShowNav, setShowList, setShowCont } = this;
+        const { mode,
+                data,
+                ifShowNav,
+                ifShowList,
+                ifShowCont,
+                articleIndex } = this.state;
 
         return (
-            <div class="main-container">
+            <div className="main-container">
                 <Nav mode={ mode }
                      ifShowNav={ ifShowNav } />
 
