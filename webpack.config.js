@@ -8,7 +8,7 @@ const MODE = process.env.MODE;
 const PORT = 2015;
 
 const webpackConfig = {
-    mode: 'development',
+    mode: MODE.toLowerCase(),
     entry: {
         'vendor': [
             'react',

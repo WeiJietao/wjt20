@@ -1,7 +1,7 @@
 import './style/index.scss';
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import request from 'superagent';
 
 import { getUrlSearchParams } from './../../common/modules';
@@ -81,11 +81,11 @@ export default class ArticleCont extends React.Component {
     }
 
     getLink() {
-        if (__DEV__) {
-            return <Link to="/home"><i className="icon-arrow-left back-icon"></i></Link>;
-        } else {
+        // if (__DEV__) {
+        //     return <Link to="/home"><i className="icon-arrow-left back-icon"></i></Link>;
+        // } else {
             return <a href="https://weijietao.github.io/wjt20/home.html"><i className="icon-arrow-left back-icon"></i></a>;
-        }
+        // }
     }
 
     render() {

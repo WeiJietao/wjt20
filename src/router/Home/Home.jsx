@@ -11,7 +11,7 @@ const resData = {
     ...require('./../../../database/md-data2.json')
 };
 
-export default class App extends React.Component {
+export default class Home extends React.Component {
     constructor(props) {
         super(props);
     }
