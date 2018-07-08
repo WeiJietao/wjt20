@@ -4,7 +4,7 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 import request from 'superagent';
 
-import { getUrlSearchParams } from './../../common/modules';
+import { getUrlSearchParams } from './../../common/modules/index.js';
 
 // 备用数据，如果请求接口出错，改用备用数据
 const resData = {
