@@ -5,8 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const MODE = process.env.MODE;
-const IP = '127.0.0.1';
-const PORT = '2015';
+const PORT = 2015;
 
 const webpackConfig = {
     mode: MODE.toLowerCase(),
@@ -16,7 +15,8 @@ const webpackConfig = {
         ],
         'vendor': [
             'react',
-            'react-dom'
+            'react-dom',
+            'react-router'
         ]
     },
     module: {
@@ -24,11 +24,7 @@ const webpackConfig = {
             {
                 // 脚本打包
                 test: /\.(js|jsx)$/,
-                loader: 'babel-loader',
-                options: {
-                    cacheDirectory: true,
-                    plugins: ['react-hot-loader/babel']
-                }
+                loader: 'babel-loader'
             },
             {
                 // CSS样式表打包
@@ -73,19 +69,16 @@ const webpackConfig = {
         }
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            title: '欢迎访问WJT20的博客',
-            filename: path.resolve(__dirname, './index.html'),
-            template: path.resolve(__dirname, './src/template.ejs'),
-            hash: false,
-            minify: false
+        // 注入常量
+        new webpack.DefinePlugin({
+            __DEV__: String(true)
         })
     ]
 }
 
 // 开发模式打包配置
 function setDevMode() {
-    // 独有插件
+    // 额外插件
     webpackConfig.plugins.push(
         // 热更新
         new webpack.HotModuleReplacementPlugin(),
@@ -93,9 +86,13 @@ function setDevMode() {
         // 分离的css文件不加hash
         new ExtractTextWebpackPlugin('[name].css'),
 
-        // 注入常量
-        new webpack.DefinePlugin({
-            __DEV__: String(true)
+        // 配置页面模板
+        new HtmlWebpackPlugin({
+            title: '欢迎访问WJT20的博客',
+            filename: path.resolve(__dirname, './dist/index.html'),
+            template: path.resolve(__dirname, './src/template.ejs'),
+            hash: false,
+            minify: false
         })
     );
 
@@ -106,14 +103,23 @@ function setDevMode() {
     webpackConfig.entry.index.push(
         'react-hot-loader/patch',
         'babel-polyfill',
-        'webpack-hot-middleware/client?path=http://127.0.0.1:2015/__webpack_hmr&timeout=20000&reload=true', // WebpackDevServer host and port
-        'webpack/hot/only-dev-server' // "only" prevents reload on syntax errors
+        'webpack-dev-server/client',
+        'webpack/hot/only-dev-server'
     );
+
+    // 开发模式server
+    webpackConfig.devServer = {
+        contentBase: path.resolve(__dirname, './dist'),
+        port: PORT,
+        historyApiFallback: true,
+        inline: true,
+        hot: true
+    };
 
     // 设置打包输出
     webpackConfig.output = {
         path: path.resolve(__dirname, './dist'),
-        publicPath: './../dist/',
+        publicPath: '/',
         filename: '[name].js',
         chunkFilename: '[name].js'
     };
@@ -121,15 +127,24 @@ function setDevMode() {
 
 // 生产模式打包配置
 function setProdMode() {
-    // 独有插件
+    // 额外插件
     webpackConfig.plugins.push(
-        // 清除打包前的文件
+        // 清除打包源文件
         new CleanWebpackPlugin([
             'dist'
         ]),
 
         // 分离的css文件加hash
         new ExtractTextWebpackPlugin('[name].[hash:8].css'),
+
+        // 配置页面模板
+        new HtmlWebpackPlugin({
+            title: '欢迎访问WJT20的博客',
+            filename: path.resolve(__dirname, './index.html'),
+            template: path.resolve(__dirname, './src/template.ejs'),
+            hash: false,
+            minify: false
+        })
     );
 
     // 设置打包输出

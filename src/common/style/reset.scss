@@ -96,3 +96,10 @@ select {
 .hide {
 	display: none;
 }
+
+main {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    font-family: "PingFang SC","Helvetica Neue","Hiragino Sans GB","Segoe UI","Microsoft YaHei","微软雅黑",sans-serif;
+}

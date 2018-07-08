@@ -7,5 +7,6 @@
     "plugins": [
         "transform-react-jsx",
         "react-hot-loader/babel"
-    ]
+    ],
+    "compact": false
 }

@@ -6,7 +6,7 @@
   "scripts": {
     "build-dev": "set MODE=DEVELOPMENT&&webpack --colors",
     "build-prod": "set MODE=PRODUCTION&&webpack --colors",
-    "dev": "set MODE=DEVELOPMENT&&webpack --colors&&node ./server.js"
+    "dev": "set MODE=DEVELOPMENT&&webpack --colors&&webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
     "react-dom": "^16.4.1",
     "react-hot-loader": "^4.3.3",
     "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
     "sass-loader": "^7.0.3",
