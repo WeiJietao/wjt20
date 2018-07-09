@@ -3,10 +3,12 @@ const path = require('path');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const md5 = require('./config/md5.js');
 
-const CONFIG = require('./database/config.json');
+const CONFIG = require('./config/config.json');
 const MODE = process.env.MODE;
 const PORT = 2015;
+const HASH = md5((new Date()).valueOf().toString()).substr(0, 8);
 
 const webpackConfig = {
     mode: MODE.toLowerCase(),
@@ -139,15 +141,15 @@ function setProdMode() {
         ]),
 
         // 分离的css文件加hash
-        new ExtractTextWebpackPlugin('[name].[hash:8].css')
+        new ExtractTextWebpackPlugin('[name].' + HASH + '.css')
     );
 
     // 设置打包出口
     webpackConfig.output = {
         path: path.resolve(__dirname, './dist'),
         publicPath: 'https://weijietao.github.io/wjt20/dist/',
-        filename: '[name].[hash:8].js',
-        chunkFilename: '[name].[hash:8].js'
+        filename: '[name].' + HASH + '.js',
+        chunkFilename: '[name].' + HASH + '.js'
     };
 
     CONFIG.forEach(function(item, index) {
@@ -177,7 +179,7 @@ switch (MODE) {
         setDevMode();
         break;
     case 'PRODUCTION':
-        // setProdMode();
+        setProdMode();
         break;
     default:
         throw new Error('不存在此模式!');
