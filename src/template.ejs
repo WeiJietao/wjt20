@@ -48,13 +48,13 @@
         doc.addEventListener('DOMContentLoaded', recalc, false);
     })(document, window);
     </script>
-    <link rel="stylesheet" href="<%= htmlWebpackPlugin.options._src %>/pages/<%= htmlWebpackPlugin.options._page %>/index.css" />
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.options._src %>/pages/<%= htmlWebpackPlugin.options._page %>/index<%= htmlWebpackPlugin.options._hash %>.css" />
 </head>
 
 <body>
     <main id="app"></main>
-    <script src="<%= htmlWebpackPlugin.options._src %>/vendor.js"></script>
-    <script src="<%= htmlWebpackPlugin.options._src %>/pages/<%= htmlWebpackPlugin.options._page %>/index.js"></script>
+    <script src="<%= htmlWebpackPlugin.options._src %>/vendor<%= htmlWebpackPlugin.options._hash %>.js"></script>
+    <script src="<%= htmlWebpackPlugin.options._src %>/pages/<%= htmlWebpackPlugin.options._page %>/index<%= htmlWebpackPlugin.options._hash %>.js"></script>
 </body>
 
 </html>

@@ -1,10 +1,10 @@
 [
     {
-        "pageName": "Home",
+        "pageName": "home",
         "title": "欢迎访问WJT20的博客"
     },
     {
-        "pageName": "ArticleCont",
+        "pageName": "article-cont",
         "title": "欢迎访问WJT20的博客"
     }
 ]
