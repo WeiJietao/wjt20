@@ -91,7 +91,7 @@ function setDevMode() {
 
     // 开发模式server
     webpackConfig.devServer = {
-        contentBase: path.resolve(__dirname, './_dist'),
+        contentBase: path.resolve(__dirname, './dist'),
         inline: true,
         port: PORT,
         hot: true,
@@ -100,7 +100,7 @@ function setDevMode() {
 
     // 设置打包出口
     webpackConfig.output = {
-        path: path.resolve(__dirname, './_dist'),
+        path: path.resolve(__dirname, './dist'),
         publicPath: '/',
         filename: '[name].js',
         chunkFilename: '[name].js'
@@ -119,7 +119,7 @@ function setDevMode() {
         webpackConfig.plugins.push(
             new HtmlWebpackPlugin({
                 title: item.title,
-                filename: path.resolve(__dirname, './_dist/pages/' + item.pageName + '/index.test.html'),
+                filename: path.resolve(__dirname, './dist/pages/' + item.pageName + '/index.test.html'),
                 template: path.resolve(__dirname, './src/template.ejs'),
                 hash: false,
                 minify: false,
@@ -138,7 +138,7 @@ function setProdMode() {
     webpackConfig.plugins.push(
         // 清除打包源文件
         new CleanWebpackPlugin([
-            '_dist'
+            'dist'
         ]),
 
         // 分离的css文件加hash
@@ -147,8 +147,8 @@ function setProdMode() {
 
     // 设置打包出口
     webpackConfig.output = {
-        path: path.resolve(__dirname, './_dist'),
-        publicPath: 'https://weijietao.github.io/wjt20/_dist/',
+        path: path.resolve(__dirname, './dist'),
+        publicPath: 'https://weijietao.github.io/wjt20/dist/',
         filename: '[name].' + HASH + '.js',
         chunkFilename: '[name].' + HASH + '.js'
     };
@@ -163,12 +163,12 @@ function setProdMode() {
         webpackConfig.plugins.push(
             new HtmlWebpackPlugin({
                 title: item.title,
-                filename: path.resolve(__dirname, './_dist/pages/' + item.pageName + '/index.html'),
+                filename: path.resolve(__dirname, './dist/pages/' + item.pageName + '/index.html'),
                 template: path.resolve(__dirname, './src/template.ejs'),
                 hash: false,
                 minify: true,
                 inject: false,
-                _src: 'https://weijietao.github.io/wjt20/_dist',
+                _src: 'https://weijietao.github.io/wjt20/dist',
                 _page: item.pageName,
                 _hash: '.' + HASH
             })
