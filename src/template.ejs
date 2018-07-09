@@ -30,28 +30,31 @@
         };
     </script>
     <script title="rem计算">
-        (function(doc, win) {
-            var docEl = doc.documentElement, //根元素
-                resizeEvt = 'onorientationchange' in window ? 'onorientationchange' : 'resize', //兼容屏幕变化事件
-                recalc = function() {
-                    var clientWidth = docEl.clientWidth > win.innerWidth ? win.innerWidth : docEl.clientWidth; //处理一些移动设备中获取到怪异设备宽度的情况
+    (function(doc, win) {
+        var docEl = doc.documentElement, //根元素
+            resizeEvt = 'onorientationchange' in window ? 'onorientationchange' : 'resize', //兼容屏幕变化事件
+            recalc = function() {
+                var clientWidth = docEl.clientWidth > win.innerWidth ? win.innerWidth : docEl.clientWidth; //处理一些移动设备中获取到怪异设备宽度的情况
 
-                    if (clientWidth >= 720) { //大于峰值规定一致的字体大小
-                        docEl.style.fontSize = '32px';
-                    } else {
-                        docEl.style.fontSize = clientWidth * 32 / 720 + 'px'; //等比例缩放
-                    }
-                };
+                if (clientWidth >= 720) { //大于峰值规定一致的字体大小
+                    docEl.style.fontSize = '32px';
+                } else {
+                    docEl.style.fontSize = clientWidth * 32 / 720 + 'px'; //等比例缩放
+                }
+            };
 
-            //事件绑定
-            win.addEventListener(resizeEvt, recalc, false);
-            doc.addEventListener('DOMContentLoaded', recalc, false);
-        })(document, window)
+        //事件绑定
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
     </script>
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.options._src %>/pages/<%= htmlWebpackPlugin.options._page %>/index.css" />
 </head>
 
 <body>
     <main id="app"></main>
+    <script src="<%= htmlWebpackPlugin.options._src %>/vendor.js"></script>
+    <script src="<%= htmlWebpackPlugin.options._src %>/pages/<%= htmlWebpackPlugin.options._page %>/index.js"></script>
 </body>
 
 </html>

@@ -17,8 +17,6 @@ export default class Home extends React.Component {
     }
 
     render() {
-        // const { contentStore, setContentType } = this.props;
-
         return (
             <div className="main-container">
                 <Nav />

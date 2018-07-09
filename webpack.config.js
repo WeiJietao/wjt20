@@ -4,6 +4,7 @@ const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const CONFIG = require('./database/config.json');
 const MODE = process.env.MODE;
 const PORT = 2015;
 
@@ -12,8 +13,7 @@ const webpackConfig = {
     entry: {
         'vendor': [
             'react',
-            'react-dom',
-            'react-router'
+            'react-dom'
         ]
     },
     module: {
@@ -47,11 +47,11 @@ const webpackConfig = {
             }
         ]
     },
-    // resolve: {
-    //     alias: {},
-    //     extensions: ['.jsx', '.js', '.scss', '.css', '.png', '.jpg'], // 最常匹配的放在最前面，减少查找
-    //     modules: [ path.resolve(__dirname, './node_modules') ] // 直接指明第三方模块的绝对路径，减少查找
-    // },
+    resolve: {
+        alias: {},
+        extensions: ['.jsx', '.js', '.scss', '.css', '.png', '.jpg'], // 最常匹配的放在最前面，减少查找
+        modules: [ path.resolve(__dirname, './node_modules') ] // 直接指明第三方模块的绝对路径，减少查找
+    },
     optimization: {
         splitChunks: {
             cacheGroups: {
@@ -81,16 +81,7 @@ function setDevMode() {
         new webpack.HotModuleReplacementPlugin(),
 
         // 分离的css文件不加hash
-        new ExtractTextWebpackPlugin('[name].css'),
-
-        // 配置页面模板
-        new HtmlWebpackPlugin({
-            title: '欢迎访问WJT20的博客',
-            filename: path.resolve(__dirname, './dist/index.html'),
-            template: path.resolve(__dirname, './src/template.ejs'),
-            hash: false,
-            minify: false
-        })
+        new ExtractTextWebpackPlugin('[name].css')
     );
 
     // dev工具
@@ -99,20 +90,11 @@ function setDevMode() {
     // 开发模式server
     webpackConfig.devServer = {
         contentBase: path.resolve(__dirname, './dist'),
-        port: PORT,
-        historyApiFallback: true,
         inline: true,
-        hot: true
+        port: PORT,
+        hot: true,
+        noInfo: true
     };
-
-    // 设置打包入口
-    webpackConfig.entry.index = [
-        path.resolve(__dirname, './src/entry.js'),
-        'react-hot-loader/patch',
-        'babel-polyfill',
-        'webpack-dev-server/client',
-        'webpack/hot/only-dev-server'
-    ];
 
     // 设置打包出口
     webpackConfig.output = {
@@ -121,6 +103,30 @@ function setDevMode() {
         filename: '[name].js',
         chunkFilename: '[name].js'
     };
+
+    CONFIG.forEach(function(item, index) {
+        // 设置打包入口
+        webpackConfig.entry['pages/' + item.pageName + '/index'] = [
+            'react-hot-loader/patch',
+            'webpack-dev-server/client?http://localhost:' + PORT + '/pages/' + item.pageName,
+            'webpack/hot/only-dev-server',
+            path.resolve(__dirname, './src/pages/' + item.pageName + '/entry.js')
+        ];
+
+        // 配置页面模板
+        webpackConfig.plugins.push(
+            new HtmlWebpackPlugin({
+                title: item.title,
+                filename: path.resolve(__dirname, './dist/pages/' + item.pageName + '/index.test.html'),
+                template: path.resolve(__dirname, './src/template.ejs'),
+                hash: false,
+                minify: false,
+                inject: false,
+                _src: '',
+                _page: item.pageName,
+            })
+        );
+    });
 }
 
 // 生产模式打包配置
@@ -133,40 +139,37 @@ function setProdMode() {
         ]),
 
         // 分离的css文件加hash
-        new ExtractTextWebpackPlugin('[name].css'),
-
-        // // 配置页面模板
-        // new HtmlWebpackPlugin({
-        //     title: '欢迎访问WJT20的博客',
-        //     filename: path.resolve(__dirname, './home.html'),
-        //     template: path.resolve(__dirname, './src/template.ejs'),
-        //     hash: false,
-        //     minify: false
-        // }),
-        // new HtmlWebpackPlugin({
-        //     title: '欢迎访问WJT20的博客',
-        //     filename: path.resolve(__dirname, './article.html'),
-        //     template: path.resolve(__dirname, './src/template.ejs'),
-        //     hash: false,
-        //     minify: false
-        // })
+        new ExtractTextWebpackPlugin('[name].[hash:8].css')
     );
-
-    // TODO 设置打包入口，需优化
-    webpackConfig.entry['home/index'] = [
-        path.resolve(__dirname, './src/router/Home/entry.js')
-    ];
-    webpackConfig.entry['article/index'] = [
-        path.resolve(__dirname, './src/router/ArticleCont/entry.js')
-    ];
 
     // 设置打包出口
     webpackConfig.output = {
         path: path.resolve(__dirname, './dist'),
         publicPath: 'https://weijietao.github.io/wjt20/dist/',
-        filename: '[name].js',
-        chunkFilename: '[name].js'
+        filename: '[name].[hash:8].js',
+        chunkFilename: '[name].[hash:8].js'
     };
+
+    CONFIG.forEach(function(item, index) {
+        // 设置打包入口
+        webpackConfig.entry['pages/' + item.pageName + '/index'] = [
+            path.resolve(__dirname, './src/pages/' + item.pageName + '/entry.js')
+        ];
+
+        // 配置页面模板
+        webpackConfig.plugins.push(
+            new HtmlWebpackPlugin({
+                title: item.title,
+                filename: path.resolve(__dirname, './dist/pages/' + item.pageName + '/index.html'),
+                template: path.resolve(__dirname, './src/template.ejs'),
+                hash: false,
+                minify: true,
+                inject: false,
+                _src: 'https://weijietao.github.io/wjt20/dist',
+                _page: item.pageName,
+            })
+        );
+    });
 }
 
 switch (MODE) {
@@ -174,7 +177,7 @@ switch (MODE) {
         setDevMode();
         break;
     case 'PRODUCTION':
-        setProdMode();
+        // setProdMode();
         break;
     default:
         throw new Error('不存在此模式!');

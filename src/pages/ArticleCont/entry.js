@@ -2,17 +2,16 @@ import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
-//导入组件
-import App from './pages/App.jsx';
+import ArticleCont from './ArticleCont.jsx';
 
 render(
     <AppContainer>
-        <App />
+        <ArticleCont />
     </AppContainer>,
     document.getElementById('app')
 );
 
 // 热更新通知
-if (module.hot && process.env.MODE === 'DEVELOPMENT'){
+if (module.hot && __DEV__){
     module.hot.accept();
 }
