@@ -1,7 +1,6 @@
 import './style/index.scss';
 
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import request from 'superagent';
 
 import { getUrlSearchParams } from './../../common/modules/index.js';

@@ -1,9 +1,9 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDom from 'react-dom';
 
 import Home from './Home.jsx';
 
-render(
+ReactDom.render(
     <Home />,
     document.getElementById('app')
 );
