@@ -43,7 +43,7 @@ export default class ArticleCont extends React.Component {
                 <h1 className="head-bar">
                     <a href={ __DEV__
                               ? '/pages/Home/index.test.html'
-                              : 'https://weijietao.github.io/wjt20/home.html'
+                              : 'https://weijietao.github.io/wjt20/dist/pages/home/index.html'
                         }>
                         <i className="icon-arrow-left back-icon"></i>
                     </a>
