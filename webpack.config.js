@@ -11,8 +11,7 @@ const PORT = 2015;
 const HASH = md5((new Date()).valueOf().toString()).substr(0, 8);
 
 const webpackConfig = {
-    // mode: MODE.toLowerCase(),
-    mode: 'development',
+    mode: MODE.toLowerCase(),
     entry: {
         'vendor': [
             'react',
@@ -24,8 +23,10 @@ const webpackConfig = {
             {
                 // 脚本打包
                 test: /\.(js|jsx)$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/
+                exclude: /node_modules/,
+                use: [
+                    'babel-loader?cacheDirectory=true'
+                ]
             },
             {
                 // CSS样式表打包
@@ -35,10 +36,8 @@ const webpackConfig = {
                         'css-loader',
                         'postcss-loader',
                         'sass-loader'
-                    ],
-                    fallback: 'style-loader'
-                }),
-                exclude: /node_modules/
+                    ]
+                })
             },
             {
                 // 图像打包
@@ -96,7 +95,7 @@ function setDevMode() {
 
     // 开发模式server
     webpackConfig.devServer = {
-        contentBase: path.resolve(__dirname, './dist'),
+        contentBase: path.resolve(__dirname, './app'),
         inline: true,
         port: PORT,
         hot: true,
@@ -105,7 +104,7 @@ function setDevMode() {
 
     // 设置打包出口
     webpackConfig.output = {
-        path: path.resolve(__dirname, './dist'),
+        path: path.resolve(__dirname, './app'),
         publicPath: '/',
         filename: '[name].js',
         chunkFilename: '[name].js'
@@ -124,7 +123,7 @@ function setDevMode() {
         webpackConfig.plugins.push(
             new HtmlWebpackPlugin({
                 title: item.title,
-                filename: path.resolve(__dirname, './dist/pages/' + item.pageName + '/index.test.html'),
+                filename: path.resolve(__dirname, './app/pages/' + item.pageName + '/index.test.html'),
                 template: path.resolve(__dirname, './src/template.ejs'),
                 hash: false,
                 minify: false,
@@ -142,9 +141,7 @@ function setProdMode() {
     // 额外插件
     webpackConfig.plugins.push(
         // 清除打包源文件
-        new CleanWebpackPlugin([
-            'dist'
-        ]),
+        new CleanWebpackPlugin(['app']),
 
         // 分离的css文件加hash
         new ExtractTextWebpackPlugin('[name].' + HASH + '.css')
@@ -152,8 +149,8 @@ function setProdMode() {
 
     // 设置打包出口
     webpackConfig.output = {
-        path: path.resolve(__dirname, './dist'),
-        publicPath: 'https://weijietao.github.io/wjt20/dist/',
+        path: path.resolve(__dirname, './app'),
+        publicPath: 'https://weijietao.github.io/wjt20/app/',
         filename: '[name].' + HASH + '.js',
         chunkFilename: '[name].' + HASH + '.js'
     };
@@ -168,12 +165,12 @@ function setProdMode() {
         webpackConfig.plugins.push(
             new HtmlWebpackPlugin({
                 title: item.title,
-                filename: path.resolve(__dirname, './dist/pages/' + item.pageName + '/index.html'),
+                filename: path.resolve(__dirname, './app/pages/' + item.pageName + '/index.html'),
                 template: path.resolve(__dirname, './src/template.ejs'),
                 hash: false,
                 minify: true,
                 inject: false,
-                _src: 'https://weijietao.github.io/wjt20/dist',
+                _src: 'https://weijietao.github.io/wjt20/app',
                 _page: item.pageName,
                 _hash: '.' + HASH
             })

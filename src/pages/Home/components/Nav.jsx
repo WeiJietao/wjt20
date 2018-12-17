@@ -1,23 +1,19 @@
 import React from 'react';
 
 export default class Nav extends React.Component {
-    constructor(props) {
+    constructor (props) {
         super(props);
     }
 
-    render() {
+    render () {
         return (
-            <nav className="nav-container">
-                <figure className="bg-container">
-                    <img className="bg-img"
-                         src="https://raw.githubusercontent.com/WeiJietao/wjt20/master/src/images/w1.jpg" />
-                </figure>
-                <figure className="avator-container">
-                    <img className="avator"
-                         src="https://raw.githubusercontent.com/WeiJietao/wjt20/master/src/images/w2.png" />
-                    <strong className="user-name">WJT20</strong>
-                </figure>
+            <nav className="nav">
+                <ul className="nav-list">
+                    <li className="nav-item">首页</li>
+                    <li className="nav-item">文章分类</li>
+                    <li className="nav-item">开源项目</li>
+                </ul>
             </nav>
-        )
+        );
     }
 }
