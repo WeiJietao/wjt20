@@ -8,8 +8,8 @@
 
     .info-container {
         box-sizing: border-box;
-        float: left;
-        width: 28%;
+        float: right;
+        width: 30%;
         height: 100%;
         padding: 30px 0 20px;
         background-color: $gray2;
@@ -27,7 +27,8 @@
             font-size: 15px;
 
             .url-item {
-                overflow: hidden;
+                min-height: 20px;
+                line-height: 20px;
                 padding: 5px 15px;
 
                 &.author-name {
@@ -35,13 +36,28 @@
                     font-size: 13px;
                 }
 
-                .label {
-                    float: left;
+                &.wechat-item {
+                    position: relative;
+
+                    .QRcode-container {
+                        position: absolute;
+                        top: 0;
+                        left: -80%;
+                        width: 80%;
+                        box-shadow: 0 0 5px 5px rgba(0,0,0,0.25);
+                        background-color: $white1;
+                        z-index: 990;
+
+                        .QRcode-img {
+                            width: 100%;
+                        }
+                    }
                 }
 
                 .value {
                     float: right;
                     font-size: 13px;
+                    line-height: inherit;
                 }
             }
         }
@@ -50,7 +66,7 @@
     .nav {
         position: relative;
         float: left;
-        width: 72%;
+        width: 70%;
         height: 100%;
         background-image: url(https://raw.githubusercontent.com/WeiJietao/wjt20/master/src/images/w1.jpg);
         background-size: 100% 100%;
