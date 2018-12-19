@@ -7,12 +7,18 @@ export default class ArticleList extends React.Component {
 
     render () {
         const { staticData } = this.props;
+        const { resource, file } = window.publicData;
 
         return (
             <ul className="article-list">
                 {
                     Object.keys(staticData).map((key, index) =>
-                        <li key={index} className="article-item">{ staticData[key].name }<i className="arrow" /></li>
+                        <a key={index}
+                            href={`${resource}/pages/article/${file}?_id=${key}`}>
+                            <li className="article-item">
+                                { staticData[key].name }<i className="arrow" />
+                            </li>
+                        </a>
                     )
                 }
             </ul>

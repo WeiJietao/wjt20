@@ -130,7 +130,8 @@ function setDevMode() {
                 inject: false,
                 _src: '',
                 _page: item.pageName,
-                _hash: ''
+                _hash: '',
+                _file: 'index.test.html'
             })
         );
     });
@@ -172,7 +173,8 @@ function setProdMode() {
                 inject: false,
                 _src: 'https://weijietao.github.io/wjt20/app',
                 _page: item.pageName,
-                _hash: '.' + HASH
+                _hash: '.' + HASH,
+                _file: 'index.html'
             })
         );
     });

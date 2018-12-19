@@ -15,7 +15,7 @@
     </title>
 
     <script title="公共全局参数">
-        var Waydua = {
+        var publicData = {
             browser: {
                 bISPC: !/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent),
                 bIsIOS: !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
@@ -26,7 +26,9 @@
                 bIsWechat: navigator.userAgent.toLowerCase().match(/micromessenger/i) == "micromessenger",
                 bIsWeibo: navigator.userAgent.toLowerCase().match(/weibo/i) == "weibo",
                 bIsHuawei: navigator.userAgent.toLowerCase().match(/huawei/i) == "huawei"
-            }
+            },
+            resource: 'https://weijietao.github.io/wjt20/app',
+            file: 'index.html'
         };
     </script>
     <script title="rem计算">
@@ -48,14 +50,14 @@
         doc.addEventListener('DOMContentLoaded', recalc, false);
     })(document, window);
     </script>
-    <link rel="stylesheet" href="https://weijietao.github.io/wjt20/app/pages/article-cont/index.D479A28B.css">
+    <link rel="stylesheet" href="https://weijietao.github.io/wjt20/app/pages/article/index.4CB06F38.css">
 </head>
 
 <body>
     <main id="app"></main>
     <script src="https://cdn.bootcss.com/echarts/4.2.0-rc.2/echarts.min.js"></script>
-    <script src="https://weijietao.github.io/wjt20/app/vendor.D479A28B.js"></script>
-    <script src="https://weijietao.github.io/wjt20/app/pages/article-cont/index.D479A28B.js"></script>
+    <script src="https://weijietao.github.io/wjt20/app/vendor.4CB06F38.js"></script>
+    <script src="https://weijietao.github.io/wjt20/app/pages/article/index.4CB06F38.js"></script>
 </body>
 
 </html>

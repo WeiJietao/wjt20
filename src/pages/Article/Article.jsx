@@ -3,20 +3,21 @@ import React from 'react';
 import staticData from './../data.js';
 
 import Header from './../../common/components/Header';
-import ArticleList from './components/ArticleList.jsx';
-import SkillTree from './components/SkillTree.jsx';
 
-export default class Home extends React.Component {
+export default class Article extends React.Component {
     constructor (props) {
         super(props);
     }
 
     render() {
+        const id = window.location.search.replace('?_id=', '');
         return (
             <div className="main-container">
                 <Header />
-                <ArticleList staticData={staticData} />
-                <SkillTree />
+
+                <article
+                    className="article"
+                    dangerouslySetInnerHTML={{ __html: decodeURI(staticData[id].cont) }} />
             </div>
         )
     }

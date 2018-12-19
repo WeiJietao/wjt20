@@ -1,0 +1,77 @@
+@import "./../../../common/style/reset.scss";
+@import "./../../../common/style/base.scss";
+
+.article {
+    margin-top: 10px;
+    padding: 60px 30px;
+    background-color: $gray2;
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 60px;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 25px;
+        margin: 40px 0;
+    }
+
+    h3 {
+        font-size: 20px;
+        margin: 30px 0;
+    }
+
+    ol,ul {
+        list-style: decimal;
+        padding-left: 22px;
+        margin: 50px 0;
+
+        li {
+            font-size: 16px;
+            margin: 15px 0;
+
+            ol,ul {
+                color: $black3;
+                margin: 0;
+
+                li {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    p {
+        font-size: 16px;
+        margin: 20px 0;
+        line-height: 25px;
+
+        code {
+            font-family: Kelson Sans Regular;
+            padding: 2px 8px;
+            margin: 3px;
+            background-color: $gray1;
+            border-radius: 2px;
+        }
+    }
+
+    pre {
+        overflow-x: auto;
+        font-size: 15px;
+        font-family: Kelson Sans Regular;
+        font-weight: bold;
+        padding: 20px;
+        background-color: $black4;
+        color: $yellow1;
+    }
+
+    hr {
+        margin: 30px 0;
+    }
+
+    img {
+        display: inline-block;
+        width: 100%;
+    }
+}

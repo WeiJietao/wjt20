@@ -15,7 +15,7 @@
     </title>
 
     <script title="公共全局参数">
-        var Waydua = {
+        var publicData = {
             browser: {
                 bISPC: !/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent),
                 bIsIOS: !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
@@ -26,7 +26,9 @@
                 bIsWechat: navigator.userAgent.toLowerCase().match(/micromessenger/i) == "micromessenger",
                 bIsWeibo: navigator.userAgent.toLowerCase().match(/weibo/i) == "weibo",
                 bIsHuawei: navigator.userAgent.toLowerCase().match(/huawei/i) == "huawei"
-            }
+            },
+            resource: '<%= htmlWebpackPlugin.options._src %>',
+            file: '<%= htmlWebpackPlugin.options._file %>'
         };
     </script>
     <script title="rem计算">
