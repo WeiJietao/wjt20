@@ -15,49 +15,47 @@
     </title>
 
     <script title="公共全局参数">
+        var ua = navigator.userAgent.toLowerCase();
         var publicData = {
             browser: {
                 bISPC: !/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent),
                 bIsIOS: !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
-                bIsUc: navigator.userAgent.toLowerCase().match(/ucweb/i) == "ucweb",
-                bIsAndroid: navigator.userAgent.toLowerCase().match(/android/i) == "android",
-                bIsAndroidVersion: Number(navigator.userAgent.toLowerCase().substr(navigator.userAgent.toLowerCase().indexOf('android') + 8, 3)),
-                bIsQQ: navigator.userAgent.toLowerCase().match(/qq/i) == "qq",
-                bIsWechat: navigator.userAgent.toLowerCase().match(/micromessenger/i) == "micromessenger",
-                bIsWeibo: navigator.userAgent.toLowerCase().match(/weibo/i) == "weibo",
-                bIsHuawei: navigator.userAgent.toLowerCase().match(/huawei/i) == "huawei"
+                bIsUc: ua.match(/ucweb/i) == "ucweb",
+                bIsAndroid: ua.match(/android/i) == "android",
+                bIsAndroidVersion: Number(ua.substr(ua.indexOf('android') + 8, 3)),
+                bIsQQ: ua.match(/qq/i) == "qq",
+                bIsWechat: ua.match(/micromessenger/i) == "micromessenger",
+                bIsWeibo: ua.match(/weibo/i) == "weibo",
+                bIsHuawei: ua.match(/huawei/i) == "huawei"
             },
             resource: 'https://weijietao.github.io/wjt20/app',
             file: 'index.html'
         };
     </script>
     <script title="rem计算">
-    (function(doc, win) {
-        var docEl = doc.documentElement, //根元素
-            resizeEvt = 'onorientationchange' in window ? 'onorientationchange' : 'resize', //兼容屏幕变化事件
-            recalc = function() {
-                var clientWidth = docEl.clientWidth > win.innerWidth ? win.innerWidth : docEl.clientWidth; //处理一些移动设备中获取到怪异设备宽度的情况
-
-                if (clientWidth >= 720) { //大于峰值规定一致的字体大小
+        (function(doc, win) {
+            var docEl = doc.documentElement; // 根元素
+            var resizeEvt = 'onorientationchange' in win ? 'onorientationchange' : 'resize'; // 兼容屏幕变化事件
+            var recalc = function() {
+                var clientWidth = Math.min(win.innerWidth, docEl.clientWidth); // 处理一些移动设备中获取到怪异设备宽度的情况
+                if (clientWidth > 720) {
                     docEl.style.fontSize = '32px';
-                } else {
-                    docEl.style.fontSize = clientWidth * 32 / 720 + 'px'; //等比例缩放
+                } else if (clientWidth <= 720) {
+                    docEl.style.fontSize = clientWidth * 32 / 720 + 'px'
                 }
             };
-
-        //事件绑定
-        win.addEventListener(resizeEvt, recalc, false);
-        doc.addEventListener('DOMContentLoaded', recalc, false);
-    })(document, window);
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
     </script>
-    <link rel="stylesheet" href="https://weijietao.github.io/wjt20/app/pages/article/index.4CB06F38.css">
+    <link rel="stylesheet" href="https://weijietao.github.io/wjt20/app/pages/article/index.62D4933C.css">
 </head>
 
 <body>
     <main id="app"></main>
     <script src="https://cdn.bootcss.com/echarts/4.2.0-rc.2/echarts.min.js"></script>
-    <script src="https://weijietao.github.io/wjt20/app/vendor.4CB06F38.js"></script>
-    <script src="https://weijietao.github.io/wjt20/app/pages/article/index.4CB06F38.js"></script>
+    <script src="https://weijietao.github.io/wjt20/app/vendor.62D4933C.js"></script>
+    <script src="https://weijietao.github.io/wjt20/app/pages/article/index.62D4933C.js"></script>
 </body>
 
 </html>
