@@ -1,6 +1,8 @@
 @import "./../../../common/style/reset.scss";
 @import "./../../../common/style/base.scss";
 
+/* ----- PC样式 START ----- */
+
 // 文章列表
 .article-list {
     float: left;
@@ -15,15 +17,11 @@
         height: 60px;
         line-height: 60px;
         text-indent: 20px;
-        border-bottom: 1px dashed $gray4;
+        border-bottom: 1px solid $white1;
 
         &:hover {
             background-color: $black1;
             color: $yellow1;
-        }
-
-        &:last-of-type {
-            border: none;
         }
 
         .arrow {
@@ -35,6 +33,10 @@
             height: 8px;
             margin: auto 0;
         }
+    }
+
+    a:last-of-type .article-item {
+        border: none;
     }
 }
 
@@ -65,3 +67,41 @@
         }
     }
 }
+
+/* ----- PC样式 END ----- */
+
+/* ----- 移动端样式 START ----- */
+
+@media only screen and (max-width: 900px) {
+    // 文章列表
+    .article-list {
+        width: 100%;
+        margin: 0;
+        font-size: 0.75rem;
+
+        .article-item {
+            height: 2.8rem;
+            line-height: 2.8rem;
+            text-indent: 0.95rem;
+        }
+    }
+
+    // 技能图
+    .skip-detail {
+        width: 100%;
+        margin: 0;
+        border-bottom: 1px solid $white1;
+
+        .title {
+            height: 2rem;
+            line-height: 2rem;
+            font-size: 0.75rem;
+            background-color: transparent;
+            color: $black1;
+            border-bottom: 1px solid $white1;
+            text-indent: 0.95rem;
+        }
+    }
+}
+
+/* ----- 移动端样式 END ----- */

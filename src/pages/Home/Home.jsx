@@ -15,8 +15,8 @@ export default class Home extends React.Component {
         return (
             <div className="main-container">
                 <Header />
-                <ArticleList staticData={staticData} />
                 <SkillTree />
+                <ArticleList staticData={staticData} />
             </div>
         )
     }
