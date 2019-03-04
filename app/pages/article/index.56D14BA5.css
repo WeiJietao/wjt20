@@ -333,127 +333,55 @@ main, .main {
     -webkit-animation: rotate-all-round 2s linear 0s infinite;
             animation: rotate-all-round 2s linear 0s infinite; }
 
-/* ----- PC端样式 START ----- */
-.header {
-  width: 100%;
-  height: 300px; }
-  .header .info-container {
-    box-sizing: border-box;
-    float: right;
-    width: 30%;
-    height: 100%;
-    padding: 30px 0 20px;
-    background-color: #ececec; }
-    .header .info-container .avatar {
-      display: block;
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 10px;
-      border-radius: 100%; }
-    .header .info-container .pc-detail {
-      width: 100%;
-      font-size: 15px; }
-      .header .info-container .pc-detail .pc-detail-item {
-        min-height: 20px;
-        line-height: 20px;
-        padding: 5px 15px; }
-        .header .info-container .pc-detail .pc-detail-item.author-name {
-          text-align: center;
-          font-size: 13px; }
-        .header .info-container .pc-detail .pc-detail-item.wechat-item {
-          position: relative; }
-          .header .info-container .pc-detail .pc-detail-item.wechat-item .QRcode-container {
-            position: absolute;
-            top: 0;
-            left: -80%;
-            width: 80%;
-            box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.25);
-            background-color: #ffffff;
-            z-index: 990; }
-            .header .info-container .pc-detail .pc-detail-item.wechat-item .QRcode-container .QRcode-img {
-              width: 100%; }
-        .header .info-container .pc-detail .pc-detail-item .value {
-          float: right;
-          font-size: 13px;
-          line-height: inherit; }
-  .header .nav {
-    position: relative;
-    float: left;
-    width: 70%;
-    height: 100%;
-    background-image: url(https://raw.githubusercontent.com/WeiJietao/wjt20/master/src/images/w1.jpg);
-    background-size: 100% 100%; }
-    .header .nav .nav-list {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      font-size: 14px;
-      background-color: #292222; }
-      .header .nav .nav-list .nav-item {
-        float: left;
-        min-width: 15%;
-        height: 45px;
-        line-height: 45px;
-        color: #ffffff;
-        text-align: center;
-        -webkit-transition: background-color 0.5s;
-        transition: background-color 0.5s; }
-        .header .nav .nav-list .nav-item:hover {
-          background-color: #fbd208;
-          color: #292222; }
-
-/* ----- PC端样式 END ----- */
-/* ----- 移动端样式 START ----- */
-@media only screen and (max-width: 900px) {
-  .header {
-    position: relative;
-    width: 100%;
-    height: 12rem; }
-    .header .info-container {
-      position: absolute;
-      width: 50%;
-      height: 10rem;
-      padding: 1.75rem 0 0;
-      margin: 0 50%;
-      -webkit-transform: translateX(-50%);
-              transform: translateX(-50%);
-      background-color: transparent;
-      color: #ffffff;
-      z-index: 10; }
-      .header .info-container .avatar {
-        width: 3.5rem;
-        height: 3.5rem;
-        margin: 0 auto; }
-      .header .info-container .pc-detail {
-        display: none; }
-      .header .info-container .mb-detail {
-        display: block;
-        font-size: 0.685rem; }
-        .header .info-container .mb-detail .mb-detail-item {
-          box-sizing: border-box;
-          float: left;
-          width: 33.33%;
-          text-align: center;
-          border-right: 1px solid #ffffff; }
-          .header .info-container .mb-detail .mb-detail-item.author-name {
-            width: 100%;
-            height: 2.25rem;
-            line-height: 2.25rem;
-            font-size: 0.75rem; }
-          .header .info-container .mb-detail .mb-detail-item:first-of-type, .header .info-container .mb-detail .mb-detail-item:last-of-type {
-            border: none; }
-    .header .nav {
-      width: 100%;
-      background-size: auto 100%; }
-      .header .nav .nav-list {
-        font-size: 0.685rem; }
-        .header .nav .nav-list .nav-item {
-          box-sizing: border-box;
-          padding: 0 1rem;
-          height: 2rem;
-          line-height: 2rem; } }
-
-/* ----- 移动端样式 END ----- */
+.article {
+  margin-top: 10px;
+  padding: 60px 30px;
+  background-color: #ececec; }
+  .article h1 {
+    font-size: 28px;
+    margin-bottom: 60px;
+    text-align: center; }
+  .article h2 {
+    font-size: 25px;
+    margin: 40px 0; }
+  .article h3 {
+    font-size: 20px;
+    margin: 30px 0; }
+  .article ol, .article ul {
+    list-style: decimal;
+    padding-left: 22px;
+    margin: 50px 0; }
+    .article ol li, .article ul li {
+      font-size: 16px;
+      margin: 15px 0; }
+      .article ol li ol, .article ol li ul, .article ul li ol, .article ul li ul {
+        color: #636363;
+        margin: 0; }
+        .article ol li ol li, .article ol li ul li, .article ul li ol li, .article ul li ul li {
+          font-size: 16px; }
+  .article p {
+    font-size: 16px;
+    margin: 20px 0;
+    line-height: 25px; }
+    .article p code {
+      font-family: Kelson Sans Regular;
+      padding: 2px 8px;
+      margin: 3px;
+      background-color: #dcdcdc;
+      border-radius: 2px; }
+  .article pre {
+    overflow-x: auto;
+    font-size: 15px;
+    font-family: Kelson Sans Regular;
+    font-weight: bold;
+    padding: 20px;
+    background-color: #111111;
+    color: #fbd208; }
+  .article hr {
+    margin: 30px 0; }
+  .article img {
+    display: inline-block;
+    width: 100%; }
 @charset "UTF-8";
 @-webkit-keyframes slide {
   from {
@@ -789,76 +717,126 @@ main, .main {
     -webkit-animation: rotate-all-round 2s linear 0s infinite;
             animation: rotate-all-round 2s linear 0s infinite; }
 
-/* ----- PC样式 START ----- */
-.article-list {
-  float: left;
-  overflow: hidden;
-  width: 69%;
-  margin: 10px 0;
-  background-color: #ececec;
-  font-size: 14px; }
-  .article-list .article-item {
+/* ----- PC端样式 START ----- */
+.header {
+  width: 100%;
+  height: 300px; }
+  .header .info-container {
+    box-sizing: border-box;
+    float: right;
+    width: 30%;
+    height: 100%;
+    padding: 30px 0 20px;
+    background-color: #ececec; }
+    .header .info-container .avatar {
+      display: block;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 10px;
+      border-radius: 100%; }
+    .header .info-container .mb-detail {
+      display: none; }
+    .header .info-container .pc-detail {
+      width: 100%;
+      font-size: 15px; }
+      .header .info-container .pc-detail .pc-detail-item {
+        min-height: 20px;
+        line-height: 20px;
+        padding: 5px 15px; }
+        .header .info-container .pc-detail .pc-detail-item.author-name {
+          text-align: center;
+          font-size: 13px; }
+        .header .info-container .pc-detail .pc-detail-item.wechat-item {
+          position: relative; }
+          .header .info-container .pc-detail .pc-detail-item.wechat-item .QRcode-container {
+            position: absolute;
+            top: 0;
+            left: -80%;
+            width: 80%;
+            box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.25);
+            background-color: #ffffff;
+            z-index: 990; }
+            .header .info-container .pc-detail .pc-detail-item.wechat-item .QRcode-container .QRcode-img {
+              width: 100%; }
+        .header .info-container .pc-detail .pc-detail-item .value {
+          float: right;
+          font-size: 13px;
+          line-height: inherit; }
+  .header .nav {
     position: relative;
-    height: 60px;
-    line-height: 60px;
-    text-indent: 20px;
-    border-bottom: 1px solid #ffffff; }
-    .article-list .article-item:hover {
-      background-color: #292222;
-      color: #fbd208; }
-    .article-list .article-item .arrow {
+    float: left;
+    width: 70%;
+    height: 100%;
+    background-image: url(https://raw.githubusercontent.com/WeiJietao/wjt20/master/src/images/w1.jpg);
+    background-size: 100% 100%; }
+    .header .nav .nav-list {
       position: absolute;
-      right: 20px;
-      top: 0;
       bottom: 0;
-      width: 8px;
-      height: 8px;
-      margin: auto 0; }
-  .article-list a:last-of-type .article-item {
-    border: none; }
+      width: 100%;
+      font-size: 14px;
+      background-color: #292222; }
+      .header .nav .nav-list .nav-item {
+        float: left;
+        min-width: 15%;
+        height: 45px;
+        line-height: 45px;
+        color: #ffffff;
+        text-align: center;
+        -webkit-transition: background-color 0.5s;
+        transition: background-color 0.5s; }
+        .header .nav .nav-list .nav-item:hover {
+          background-color: #fbd208;
+          color: #292222; }
 
-.skip-detail {
-  box-sizing: border-box;
-  float: right;
-  width: 30%;
-  background-color: #ececec;
-  margin: 10px 0; }
-  .skip-detail .title {
-    height: 45px;
-    line-height: 45px;
-    text-indent: 16px;
-    font-size: 16px;
-    background-color: #292222;
-    color: #fbd208; }
-  .skip-detail .skip-detail-container {
-    width: 100%;
-    height: 350px;
-    margin: auto; }
-    .skip-detail .skip-detail-container div {
-      overflow: auto !important; }
-
-/* ----- PC样式 END ----- */
+/* ----- PC端样式 END ----- */
 /* ----- 移动端样式 START ----- */
 @media only screen and (max-width: 900px) {
-  .article-list {
+  .header {
+    position: relative;
     width: 100%;
-    margin: 0;
-    font-size: 0.75rem; }
-    .article-list .article-item {
-      height: 2.8rem;
-      line-height: 2.8rem;
-      text-indent: 0.95rem; }
-  .skip-detail {
-    width: 100%;
-    margin: 0;
-    border-bottom: 1px solid #ffffff; }
-    .skip-detail .title {
-      height: 2rem;
-      line-height: 2rem;
-      font-size: 0.75rem;
+    height: 12rem; }
+    .header .info-container {
+      position: absolute;
+      width: 50%;
+      height: 10rem;
+      padding: 1.75rem 0 0;
+      margin: 0 50%;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%);
       background-color: transparent;
-      color: #292222;
-      border-bottom: 1px solid #ffffff;
-      text-indent: 0.95rem; } }
+      color: #ffffff;
+      z-index: 10; }
+      .header .info-container .avatar {
+        width: 3.5rem;
+        height: 3.5rem;
+        margin: 0 auto; }
+      .header .info-container .pc-detail {
+        display: none; }
+      .header .info-container .mb-detail {
+        display: block;
+        font-size: 0.685rem; }
+        .header .info-container .mb-detail .mb-detail-item {
+          box-sizing: border-box;
+          float: left;
+          width: 33.33%;
+          text-align: center;
+          border-right: 1px solid #ffffff; }
+          .header .info-container .mb-detail .mb-detail-item.author-name {
+            width: 100%;
+            height: 2.25rem;
+            line-height: 2.25rem;
+            font-size: 0.75rem; }
+          .header .info-container .mb-detail .mb-detail-item:first-of-type, .header .info-container .mb-detail .mb-detail-item:last-of-type {
+            border: none; }
+    .header .nav {
+      width: 100%;
+      background-size: auto 100%; }
+      .header .nav .nav-list {
+        font-size: 0.685rem; }
+        .header .nav .nav-list .nav-item {
+          box-sizing: border-box;
+          padding: 0 1rem;
+          height: 2rem;
+          line-height: 2rem; } }
 
 /* ----- 移动端样式 END ----- */
