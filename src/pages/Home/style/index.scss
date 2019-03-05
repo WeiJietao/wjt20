@@ -24,6 +24,16 @@
             color: $yellow1;
         }
 
+        .title {
+            display: inline-block;
+            width: 80%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            text-indent: 0;
+            vertical-align: middle;
+        }
+
         .arrow {
             position: absolute;
             right: 20px;
@@ -40,34 +50,6 @@
     }
 }
 
-// 技能图
-.skip-detail {
-    box-sizing: border-box;
-    float: right;
-    width: 30%;
-    background-color: $gray2;
-    margin: 10px 0;
-
-    .title {
-        height: 45px;
-        line-height: 45px;
-        text-indent: 16px;
-        font-size: 16px;
-        background-color: $black1;
-        color: $yellow1;
-    }
-
-    .skip-detail-container {
-        width: 100%;
-        height: 350px;
-        margin: auto;
-
-        div {
-            overflow: auto !important;
-        }
-    }
-}
-
 /* ----- PC样式 END ----- */
 
 /* ----- 移动端样式 START ----- */
@@ -77,29 +59,12 @@
     .article-list {
         width: 100%;
         margin: 0;
-        font-size: 0.75rem;
+        font-size: 0.8rem;
 
         .article-item {
             height: 2.8rem;
             line-height: 2.8rem;
-            text-indent: 0.95rem;
-        }
-    }
-
-    // 技能图
-    .skip-detail {
-        width: 100%;
-        margin: 0;
-        border-bottom: 1px solid $white1;
-
-        .title {
-            height: 2rem;
-            line-height: 2rem;
-            font-size: 0.75rem;
-            background-color: transparent;
-            color: $black1;
-            border-bottom: 1px solid $white1;
-            text-indent: 0.95rem;
+            text-indent: 0.9rem;
         }
     }
 }

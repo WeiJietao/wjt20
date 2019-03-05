@@ -1,0 +1,52 @@
+@import "./../../style/reset.scss";
+@import "./../../style/base.scss";
+
+/* ----- PC端样式 START ----- */
+
+// 技能图
+.skill-detail {
+    box-sizing: border-box;
+    float: right;
+    width: 30%;
+    background-color: $gray2;
+    margin: 10px 0;
+
+    .title {
+        height: 45px;
+        line-height: 45px;
+        text-indent: 16px;
+        font-size: 16px;
+        background-color: $black1;
+        color: $yellow1;
+    }
+
+    .skill-detail-container {
+        display: block;
+        width: 100%;
+        height: 350px;
+        margin: auto;
+
+        div {
+            overflow: auto !important;
+        }
+    }
+}
+
+/* ----- PC样式 END ----- */
+
+/* ----- 移动端样式 START ----- */
+
+@media only screen and (max-width: 900px) {
+    // 技能图
+    .skill-detail {
+        width: 100%;
+        margin: 0;
+        border-bottom: 1px solid $black1;
+
+        .title {
+            display: none;
+        }
+    }
+}
+
+/* ----- 移动端样式 END ----- */

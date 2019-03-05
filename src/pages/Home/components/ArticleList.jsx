@@ -16,7 +16,8 @@ export default class ArticleList extends React.Component {
                         <a key={index}
                             href={`${resource}/pages/article/${file}?_id=${key}`}>
                             <li className="article-item">
-                                { staticData[key].name }<i className="arrow" />
+                                <span className="title">{ staticData[key].name }</span>
+                                <i className="arrow" />
                             </li>
                         </a>
                     )

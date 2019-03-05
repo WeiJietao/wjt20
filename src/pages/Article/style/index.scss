@@ -1,23 +1,28 @@
 @import "./../../../common/style/reset.scss";
 @import "./../../../common/style/base.scss";
 
+/* ----- PC样式 START ----- */
+
 .article {
     margin-top: 10px;
     padding: 60px 30px;
     background-color: $gray2;
 
     h1 {
+        font-weight: bold;
         font-size: 28px;
         margin-bottom: 60px;
         text-align: center;
     }
 
     h2 {
+        font-weight: bold;
         font-size: 25px;
         margin: 40px 0;
     }
 
     h3 {
+        font-weight: bold;
         font-size: 20px;
         margin: 30px 0;
     }
@@ -75,3 +80,66 @@
         width: 100%;
     }
 }
+
+/* ----- PC样式 END ----- */
+
+/* ----- 移动端样式 START ----- */
+
+@media only screen and (max-width: 900px) {
+    .article {
+        margin-top: 0;
+        padding: 1.6rem 0.8rem;
+
+        h1 {
+            font-size: 1rem;
+            margin-bottom: 1.6rem;
+        }
+
+        h2 {
+            font-size: 0.8rem;
+            margin: 1.5rem 0;
+        }
+
+        h3 {
+            font-size: 0.78rem;
+            margin: 1rem 0;
+        }
+
+        ol,ul {
+            padding-left: 0.75rem;
+            margin: 1rem 0;
+
+            li {
+                font-size: 0.75rem;
+                margin: 0.75rem 0;
+
+                ol li,ul li {
+                    font-size: 0.75rem;
+                }
+            }
+        }
+
+        p {
+            font-size: 0.75rem;
+            margin: 0.5rem 0;
+            line-height: 1.35rem;
+
+            code {
+                padding: 1px 3px;
+                margin: 3px;
+                border-radius: 2px;
+            }
+        }
+
+        pre {
+            font-size: 0.78rem;
+            padding: 0.5rem;
+        }
+
+        hr {
+            margin: 1.5rem 0;
+        }
+    }
+}
+
+/* ----- 移动端样式 END ----- */

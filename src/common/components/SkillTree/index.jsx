@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.scss';
 
 export default class SkillTree extends React.Component {
     constructor (props) {
@@ -14,11 +15,11 @@ export default class SkillTree extends React.Component {
                    }
                 },
                 indicator: [
-                    { name: 'WF', max: 55 },
-                    { name: 'WB', max: 55 },
-                    { name: 'Native', max: 55 },
-                    { name: 'Other', max: 55 },
-                    { name: 'Skill', max: 55 },
+                    { name: '前端', max: 55 },
+                    { name: '后端', max: 55 },
+                    { name: '原生', max: 55 },
+                    { name: '其他', max: 55 },
+                    { name: '编程基础', max: 55 },
                ],
                radius: 80
             },
@@ -34,15 +35,21 @@ export default class SkillTree extends React.Component {
     }
 
     componentDidMount () {
-        const myChart = echarts.init(document.getElementById('skip-detail-container'));
+        const myChart = echarts.init(document.getElementById('skill-detail-container'));
+        myChart.setOption(this.option);
+    }
+
+    componentWillReceiveProps () {
+        const myChart = echarts.init(document.getElementById('skill-detail-container'));
         myChart.setOption(this.option);
     }
 
     render () {
+        const { ifShowSkillDetail } = this.props;
         return (
-            <aside className="skip-detail">
+            <aside className="skill-detail">
                 <h2 className="title">技能树</h2>
-                <div id="skip-detail-container" className="skip-detail-container" />
+                <div id="skill-detail-container" className="skill-detail-container" />
             </aside>
         );
     }
